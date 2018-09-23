@@ -8,12 +8,12 @@ public class Car{
 		oilConsumption = oil;
 	}
 	public Car() {}
-	public Boolean addGas(float g){	#加油
+	public Boolean addGas(float g){	//加油
 		if(g!=0)
 			tank = tank+g;
 		return true;
 	}
-	public Boolean isRun(){	#判断油量是否耗尽
+	public Boolean isRun(){	//判断油量是否耗尽
 		if(tank>0)
 			return true;
 		if(tank==0)
