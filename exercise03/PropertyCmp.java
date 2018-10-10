@@ -33,12 +33,16 @@ class Timeclac{
 	public long getArrayListTime(int times) {	
 		List<Integer> list = new ArrayList<Integer>();
         int i;
-        while(list.size() < 10000){
-            i = r.nextInt(10000);
-            if(!list.contains(i)){
-                list.add(i);
-            }
+        // while(list.size() < 10000){
+        //     i = r.nextInt(10000);
+        //     if(!list.contains(i)){
+        //         list.add(i);
+        //     }
+        // }
+        for(i=0;list.size()<10000;i++){
+            list.add(i);
         }
+        
         
         long start=System.nanoTime(); //获取开始时间
         for(int x=0;x<times;x++)
@@ -51,11 +55,8 @@ class Timeclac{
 	public long getLinkedListTime(int times) {
 		List<Integer> list = new LinkedList<Integer>();
         int i;
-        while(list.size() < 10000){
-            i = r.nextInt(10000);
-            if(!list.contains(i)){
-                list.add(i);
-            }
+        for(i=0;list.size()<10000;i++){
+            list.add(i);
         }
         
         long start=System.nanoTime(); //获取开始时间
@@ -69,11 +70,8 @@ class Timeclac{
 	public long getVectorTime(int times) {
 		List<Integer> list = new Vector<Integer>();
         int i;
-        while(list.size() < 10000){
-            i = r.nextInt(10000);
-            if(!list.contains(i)){
-                list.add(i);
-            }
+        for(i=0;list.size()<10000;i++){
+            list.add(i);
         }
         
         long start=System.nanoTime(); //获取开始时间
@@ -87,11 +85,8 @@ class Timeclac{
 	public long getHashSetTime(int times) {
 		HashSet<Integer> hash = new HashSet<Integer>();
         int i;
-        while(hash.size() < 10000){
-            i = r.nextInt(10000);
-            if(!hash.contains(i)){
-                hash.add(i);
-            }
+        for(i=0;hash.size()<10000;i++){
+            hash.add(i);
         }
         
         long start=System.nanoTime(); //获取开始时间
@@ -105,11 +100,8 @@ class Timeclac{
 	public long getTreeSetTime(int times) {
 		TreeSet<Integer> tree = new TreeSet<Integer>();
         int i;
-        while(tree.size() < 10000){
-            i = r.nextInt(10000);
-            if(!tree.contains(i)){
-                tree.add(i);
-            }
+        for(i=0;tree.size()<10000;i++){
+            tree.add(i);
         }
         
         long start=System.nanoTime(); //获取开始时间
@@ -122,12 +114,15 @@ class Timeclac{
 	
 	public long getHashMapTime(int times) {
 		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
-        int i;
-        for(int j=0; map.size() < 10000; j++){
-            i = r.nextInt(10000);
-            if(!map.containsValue(i)){
-                map.put(j,i);
-            }
+        int i,j;
+        // for(int j=0; map.size() < 10000; j++){
+        //     i = r.nextInt(10000);
+        //     if(!map.containsValue(i)){
+        //         map.put(j,i);
+        //     }
+        // }
+        for(i=0,j=0;map.size()<10000;i++,j++){
+            map.put(j,i);
         }
         
         long start=System.nanoTime(); //获取开始时间
@@ -140,12 +135,9 @@ class Timeclac{
 	
 	public long getTreeMapTime(int times) {
 		TreeMap<Integer,Integer> map = new TreeMap<Integer,Integer>();
-        int i;
-        for(int j=0; map.size() < 10000; j++){
-            i = r.nextInt(10000);
-            if(!map.containsValue(i)){
-                map.put(j,i);
-            }
+        int i,j;
+        for(i=0,j=0;map.size()<10000;i++,j++){
+            map.put(j,i);
         }
         
         long start=System.nanoTime(); //获取开始时间
