@@ -87,13 +87,16 @@ class CompanyRecord{
 			for(Staff c:record.staff) {
 				String staffMonth=c.birthday.split("-")[1];
 				if(!staffMonth.equals(month)){	//当员工生日时有礼物
-					System.out.println(c.name+" 工资:"+c.salarys+" "+date);
-					record.info.add(c.name+" 工资:"+c.salarys+" "+date);
+					String output=c.name+" 工资:"+c.salarys+" "+date;
+					System.out.println(output);
+					if(!record.info.contains(output))
+						record.info.add(output);
 				}			
 				else{
-
-					System.out.println(c.name+" 工资:"+c.salarys+" 礼物:"+c.giftMoney+" "+date);
-					record.info.add(c.name+" 工资:"+c.salarys+" 礼物:"+c.giftMoney+" "+date);
+					String output=c.name+" 工资:"+c.salarys+" 礼物:"+c.giftMoney+" "+date;
+					System.out.println(output);
+					if(!record.info.contains(output))
+						record.info.add(output);
 				}
 			}
 			return true;
@@ -111,12 +114,16 @@ class CompanyRecord{
 				String directorMonth=c.birthday.split("-")[1];
 				if(!directorMonth.equals(month))	//当经理生日时有礼物
 				{
-					System.out.println(c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+" "+date);
-					record.info.add(c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+" "+date);
+					String output=c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+" "+date;
+					System.out.println(output);
+					if(!record.info.contains(output))
+						record.info.add(output);
 				}			
 				else{
-					record.info.add(c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+c.bonus+" 礼物:"+" "+date);
-					System.out.println(c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+" 礼物:"+c.giftMoney+" "+date);
+					String output=c.name+" 工资:"+c.salarys+" 奖金:"+c.bonus+c.bonus+" 礼物:"+" "+date;
+					System.out.println(output);
+					if(!record.info.contains(output))
+						record.info.add(output);
 				}
 			}
 			return true;
@@ -134,8 +141,10 @@ class CompanyRecord{
 				if(!month.equals("12"))	//股东只有12月有记录
 					System.out.println("无记录!");
 				else{
-					System.out.println(c.name+" 分红:"+c.dividend+" "+date);
-					record.info.add(c.name+" 分红:"+c.dividend+" "+date);
+					String output=c.name+" 分红:"+c.dividend+" "+date;
+					System.out.println(output);
+					if(!record.info.contains(output))
+						record.info.add(output);
 				}
 			}
 			return true;
@@ -307,7 +316,9 @@ class CompanyInOut{
 }
 
 public class SalaryManage {
-		
+	/**
+	* 逻辑控制及菜单实现
+	*/	
 	public static void main(String args[]) {
 		SalaryManage demo=new SalaryManage();
 		ArrayList<Integer> serial=new ArrayList<Integer>(6);
@@ -319,9 +330,9 @@ public class SalaryManage {
 			int input=printMenu();
 			if (!(serial.contains(input)))
             	System.out.println("输入错误，请重新输入！");
-            else if(input==1){
-             	//Scanner sc = new Scanner(System.in);
-             	//System.out.println(">>>请输入要添加的职员信息:");
+	        else if(input==1){
+	         	// Scanner sc = new Scanner(System.in);
+	         	// System.out.println(">>>请输入要添加的职员信息:");
 				// String s = sc.nextLine();
 				// String[] arr=s.split(" ");
 				// demo.addMember(arr[0],arr[1],Double.parseDouble(arr[2]),arr[3]);
@@ -331,10 +342,10 @@ public class SalaryManage {
 				demo.addMember("股东01","1999-01-01",0.2,"股东");
 				demo.addMember("股东02","1999-02-05",0.3,"股东");
 				System.out.println("成员测试数据已添加!");
-            }
-            else if(input==2){
-             	//Scanner sc = new Scanner(System.in);
-            	//System.out.println(">>>请输入要发放工资的日期:");
+	        }
+	        else if(input==2){
+	         	// Scanner sc = new Scanner(System.in);
+	        	// System.out.println(">>>请输入要发放工资的日期:");
 				// CompanyInOut temp=new CompanyInOut();
 				// temp.monthPayoff(sc.nextLine());
 				CompanyInOut temp=new CompanyInOut();
@@ -342,29 +353,29 @@ public class SalaryManage {
 				temp.monthPayoff("2018-11");
 				temp.monthPayoff("2018-12");
 				System.out.println("工资测试数据已添加!");
-            }
+	        }
 			else if(input==3){
 				Scanner sc = new Scanner(System.in);
-            	System.out.println(">>>请输入要查询成员的姓名和职位:");
-            	String s = sc.nextLine();
-            	String[] arr=s.split(" ");
-            	if(arr[1].equals("员工")){
-            		StaffRecord sr=new StaffRecord();
+	        	System.out.println(">>>请输入要查询成员的姓名和职位:");
+	        	String s = sc.nextLine();
+	        	String[] arr=s.split(" ");
+	        	if(arr[1].equals("员工")){
+	        		StaffRecord sr=new StaffRecord();
 					sr.record(arr[0]);
-            	}
-            	else if(arr[1].equals("经理")){
-            		DirectorRecord dr=new DirectorRecord();
+	        	}
+	        	else if(arr[1].equals("经理")){
+	        		DirectorRecord dr=new DirectorRecord();
 					dr.record(arr[0]);
-            	}
-            	else if(arr[1].equals("股东")){
-            		ShareholderRecord sr=new ShareholderRecord();
+	        	}
+	        	else if(arr[1].equals("股东")){
+	        		ShareholderRecord sr=new ShareholderRecord();
 					sr.record(arr[0]);
-            	}
+	        	}
 			}
 			else if(input==4){
 				Scanner sc = new Scanner(System.in);
-            	System.out.println(">>>请输入要查询的日期:");
-            	CompanyInOut temp=new CompanyInOut();
+	        	System.out.println(">>>请输入要查询的日期:");
+	        	CompanyInOut temp=new CompanyInOut();
 				try {
 					CompanyRecord.printAllMember(sc.nextLine(),false);
 				} catch (IOException e) {
